@@ -5,6 +5,8 @@ import time
 
 # intializing the driver
 driver = webdriver.Chrome()
+# it waits for 20 seconds if an elements is not found
+driver.implicitly_wait(20)
 driver.get('https://web.facebook.com')
 
 # finding email and password box for login
@@ -15,13 +17,13 @@ password = driver.find_element_by_id('pass')
 email.send_keys(credentials.email)
 password.send_keys(credentials.password)
 password.send_keys(Keys.RETURN)
-time.sleep(10)
+# time.sleep(10)
 
 # heading over to profile
 profile = driver.find_element_by_xpath(
     '/html/body/div[1]/div[2]/div/div[1]/div/div/div/div[2]/div[1]/div[1]/div/a')
 profile.click()
-time.sleep(20)
+# time.sleep(20)
 
 # finding the post comment box
 commentbox = driver.find_element_by_xpath(
@@ -31,4 +33,4 @@ commentbox = driver.find_element_by_xpath(
 for i in range(10):
     commentbox.send_keys('this is an automated comment')
     commentbox.send_keys(Keys.RETURN)
-    time.sleep(2)
+    # time.sleep(2)
